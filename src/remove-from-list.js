@@ -26,23 +26,16 @@ function removeKFromList(l, k) {
   let nowItem = l;
   while(nowItem !== null){
     //первый элемент равен искомому (первые)
-    if(nowItem.next === l.next && nowItem.value === k){
+    if(nowItem.next === l.next && nowItem.value === k)
       l = nowItem.next;
-    }
     //последний элемент равен искомому
-    if(nowItem.next !== null && (nowItem.next.next === null && nowItem.next.value === k)){
+    if(nowItem.next !== null && (nowItem.next.next === null && nowItem.next.value === k))
       nowItem.next = null;
-    }
     //элемент не равен искомому, но следующий равен
-    if(nowItem.next !== null && (nowItem.next.next !== null && nowItem.next.value === k)){
+    while(nowItem.next !== null && (nowItem.next.next !== null && nowItem.next.value === k)){
       nowItem.next = nowItem.next.next;
-      if( nowItem.next.value === k){
-        nowItem.next = nowItem.next.next;
-      }
     }
-
     nowItem = nowItem.next;
-
   }
   return l;
 }
