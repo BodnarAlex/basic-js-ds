@@ -9,8 +9,6 @@ const { Node } = require('../extensions/list-tree.js');
 class BinarySearchTree {
   constructor() {
     this.first = null;
-    this.left = null;
-    this.right = null;
   }
 
   root() {
@@ -20,11 +18,10 @@ class BinarySearchTree {
   add(data) {
     let addNode = new Node(data);
 
-    if (this.first === null) {
+    if (this.first === null)
       this.first = addNode;
-    } else {
+    else
       this.insertNode(this.first, addNode);
-    }
   }
 
   insertNode(root, addNode) {
@@ -76,18 +73,30 @@ class BinarySearchTree {
     // remove line with error and write your code here
   }
 
-  min() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+  min(node = this.first) {
+    if(node == null){
+      return null;
+    }else{
+      if(node.left === null){
+        return node.data;
+      }else{
+        return this.min(node.left);
+      }
+    }
   }
 
-  max() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+  max(node = this.first) {
+    if(node == null){
+      return null;
+    }else{
+      if(node.right === null){
+        return node.data;
+      }else{
+        return this.max(node.right);
+      }
+    }
   }
 }
-
-
 
 module.exports = {
   BinarySearchTree
