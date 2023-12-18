@@ -26,46 +26,32 @@ class BinarySearchTree {
 
   insertNode(root, addNode) {
     if (addNode.data < root.data) {
-      if (root.left === null) {
+      if (root.left === null)
         root.left = addNode;
-      } else {
+      else
         this.insertNode(root.left, addNode);
-      }
     } else {
-      if (root.right === null) {
+      if (root.right === null)
         root.right = addNode;
-      } else {
+      else
         this.insertNode(root.right, addNode);
-      }
     }
   }
 
-  has(data, node = this.first) {
-    if (node === null) {
-      return false;
-    } else {
-      if (node.data === data) {
-        return true;
-      } else if (node.data > data) {
-        return this.has(data, node.left);
-      } else {
-        return this.has(data, node.right);
-      }
-    }
+  has(data) {
+    return this.find(data) !== null;
   }
 
   find(data, node = this.first) {
-    if (node === null) {
+    if (node === null)
       return null;
-    } else {
-      if (node.data === data) {
-        return node;
-      } else if (node.data > data) {
-        return this.find(data, node.left);
-      } else {
-        return this.find(data, node.right);
-      }
-    }
+
+    if (node.data === data)
+      return node;
+    else if (node.data > data)
+      return this.find(data, node.left);
+    else
+      return this.find(data, node.right);
   }
 
   remove(data) {
@@ -73,23 +59,22 @@ class BinarySearchTree {
   }
 
   delete(node, data) {
-    if (node === null) {
+    if (node === null)
       return node;
-    }
-    if(data < node.data){
+
+    if (data < node.data) {
       node.left = this.delete(node.left, data);
-    }else if(data > node.data){
+    } else if (data > node.data) {
       node.right = this.delete(node.right, data);
-    }else{
+    } else {
       //здесь нашли узел
-      if(!node.left && !node.right){
+      if (!node.left && !node.right)
         return null;
-      }
-      if(!node.left){
+
+      if (!node.left)
         return node.right;
-      }else if(!node.right){
+      else if (!node.right)
         return node.left;
-      }
       node.data = this.min(node.right);
       node.right = this.delete(node.right, node.data)
     }
@@ -98,27 +83,23 @@ class BinarySearchTree {
 
 
   min(node = this.first) {
-    if(node == null){
+    if (node == null)
       return null;
-    }else{
-      if(node.left === null){
-        return node.data;
-      }else{
-        return this.min(node.left);
-      }
-    }
+
+    if (node.left === null)
+      return node.data;
+    else
+      return this.min(node.left);
   }
 
   max(node = this.first) {
-    if(node == null){
+    if (node == null)
       return null;
-    }else{
-      if(node.right === null){
-        return node.data;
-      }else{
-        return this.max(node.right);
-      }
-    }
+
+    if (node.right === null)
+      return node.data;
+    else
+      return this.max(node.right);
   }
 }
 
