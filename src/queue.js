@@ -27,7 +27,7 @@ class Queue {
   enqueue(value) {
     let addList = new ListNode(value);
 
-    if (!this.first)
+    if (this.first === null)
       this.first = addList;
     else
       this.last.next = addList;
