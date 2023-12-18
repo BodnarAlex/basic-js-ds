@@ -31,7 +31,7 @@ function removeKFromList(l, k) {
     //последний элемент равен искомому
     if(nowItem.next !== null && (nowItem.next.next === null && nowItem.next.value === k))
       nowItem.next = null;
-    //элемент не равен искомому, но следующий равен
+    //элемент не равен искомому, но следующий равен (следующие)
     while(nowItem.next !== null && (nowItem.next.next !== null && nowItem.next.value === k)){
       nowItem.next = nowItem.next.next;
     }
